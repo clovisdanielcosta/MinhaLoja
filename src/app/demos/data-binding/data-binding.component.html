@@ -1,0 +1,47 @@
+<!-- Page Content -->
+<div class="container main-container">
+    <h1 style="margin-top: 70px;">Interpolation</h1>
+    <p>O número de cliques é:  <span style="font-size: larger; color: orangered; font-weight: 600;">{{ contadorClique }}</span></p>
+    <br>
+    
+    <p [ngClass]="{ 
+                    'text-secondary': contadorClique < 3,
+                    'text-success': contadorClique >=3, 
+                    'text-warning': contadorClique >=5, 
+                    'text-danger': contadorClique >=9
+                }">O número de cliques é:  {{ contadorClique }}</p>
+
+
+    <h3>Property Binding</h3>
+
+    <button class="btn btn-info" [disabled]="contadorClique >= 10">Info</button><br><br>
+    <img [src]="urlImagem" height="50px" width="50px">
+
+    <br>
+    <h3>Event Binding</h3>
+    <button class="btn btn-warning" (click)='adicionarClique()'>Clique-me</button>
+    <button class="btn btn-dark" (click)='zerarContador()' [disabled]='contadorClique < 10'>Zerar Contador</button><br><br>
+
+    <h3>Two-Way Binding</h3>
+
+    <h4>Falso Two-Way binding: Mesmo resultado mas mais verboso.</h4>
+    <input type="text" (keyup)='desapertarTecla($event)' placeholder="Digite o seu nome">   
+    <br>
+    <label>Seu nome é:  <span style="font-size: larger; color: orangered; font-weight: 600;">{{ nome1 }}</span></label>
+    <br>
+
+
+    <h4>Forma mais verbosa de verdadeiro Two-Way Binding com ngModel</h4>
+    <input type="text" [ngModel]="nome" (ngModelChange)='nome = $event' placeholder="Digite o seu nome">   
+    <br>
+    <label>Seu nome é:  <span style="font-size: larger; color:blue; font-weight: 600;">{{ nome }}</span></label>
+    <br>
+
+
+    <h4>Forma mais Elegante de verdadeiro Two-Way Binding com ngModel</h4>
+    <input type="text" [(ngModel)]="nome3" placeholder="Digite o seu nome">   
+    <br>
+    <label class="{{ nome3 }}">Seu nome é:  <span style="font-size: larger; color:green; font-weight: 600;">{{ nome3 }}</span></label><br>
+    <label [ngClass]="nome3">Seu nome é: {{ nome3 }}</label>
+
+</div>
